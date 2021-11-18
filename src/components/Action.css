@@ -1,0 +1,17 @@
+.Action > .button {
+  margin-left: 5px;
+  font-size: 20px;
+  width: 40px;
+}
+.Action > .view {
+  background-color: #00f;
+  border: 1px solid #00f;
+}
+.Action > .edit {
+  background-color: #ffa500;
+  border: 1px solid #ffa500;
+}
+.Action > .delete {
+  background-color: #f00;
+  border: 1px solid #f00;
+}

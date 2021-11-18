@@ -1,0 +1,11 @@
+.table {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+.table > thead > tr > th,
+.table > tbody > tr > td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}

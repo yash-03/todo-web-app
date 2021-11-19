@@ -1,0 +1,14 @@
+.filter {
+  font-size: 16px;
+}
+.filter > label {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 19px;
+}
+.filter > .select-box {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  background: white;
+}

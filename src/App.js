@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import Button from "./components/Button";
+import Filter from "./components/Filter";
+import Table from "./components/Table/Table";
+import Action from "./components/Action";
+import { statusList, record } from "./constants.js";
+import "./App.css";
 
 function App() {
+  const todoTaskList = () => {
+    return record.map((task) => {
+      const { title, color } = statusList.find((el) => el.id === task.status);
+      return {
+        ...task,
+        status: <span style={{ color }}>{title}</span>,
+        action: <Action id={task.id} />,
+      };
+    });
+  };
+
+  useEffect(() => {
+    document.title = "Todo List";
+  });
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2>Todo List</h2>
+        <div className="todo-list-controller">
+          <Button text="+" />
+          <Filter />
+        </div>
       </header>
+      <section className="App-body">
+        <div className="task-table">
+          <Table data={todoTaskList()} />
+        </div>
+      </section>
     </div>
   );
 }

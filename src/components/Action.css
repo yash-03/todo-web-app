@@ -1,17 +1,21 @@
-.Action > .button {
+.Action {
+  display: flex;
+}
+.Action > .button,
+.Action > .tooltip > .button {
   margin-left: 5px;
   font-size: 20px;
   width: 40px;
 }
-.Action > .view {
+.Action > .tooltip > .view {
   background-color: #00f;
   border: 1px solid #00f;
 }
-.Action > .edit {
+.Action > .tooltip > .edit {
   background-color: #ffa500;
   border: 1px solid #ffa500;
 }
-.Action > .delete {
+.Action > .tooltip > .delete {
   background-color: #f00;
   border: 1px solid #f00;
 }

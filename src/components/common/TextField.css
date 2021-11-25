@@ -1,0 +1,21 @@
+.form-field {
+  margin: auto;
+  margin-top: 10px;
+}
+.form-field > .field-label {
+  display: block;
+  font-weight: bold;
+  color: #2c560c;
+}
+.form-field > .field-control {
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 23px;
+  border-radius: 6px;
+  border: 2px solid #aae3b7;
+  width: 100%;
+  font-family: serif;
+}
+.form-field > .text-field {
+  width: 97.5%;
+}

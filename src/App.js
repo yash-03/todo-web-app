@@ -4,6 +4,7 @@ import Filter from "./components/Filter";
 import Table from "./components/Table/Table";
 import Action from "./components/Action";
 import { statusList, record } from "./constants.js";
+import EditForm from "./components/EditForm";
 import "./App.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <EditForm />
       <header className="App-header">
         <h2>Todo List</h2>
         <div className="todo-list-controller">

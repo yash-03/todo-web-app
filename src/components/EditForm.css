@@ -1,0 +1,12 @@
+.form {
+  width: 80%;
+  margin: auto;
+}
+.form > h2 {
+  color: #2c560c;
+}
+.form > .form-button {
+  width: 100%;
+  border-radius: 6px;
+  margin: 10px auto 15px;
+}

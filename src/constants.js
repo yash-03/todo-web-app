@@ -29,7 +29,7 @@ export const statusList = [
 export const record = [
   {
     id: 1,
-    task: "first",
+    task: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
     status: 1,
   },
   {
@@ -42,4 +42,17 @@ export const record = [
     task: "third",
     status: 4,
   },
+];
+
+export const priorities = [
+  { label: "low", value: 1 },
+  { label: "medium", value: 2 },
+  { label: "high", value: 3 },
+];
+
+export const status = [
+  { label: "pending", value: 1 },
+  { label: "working", value: 2 },
+  { label: "open", value: 3 },
+  { label: "finish", value: 4 },
 ];

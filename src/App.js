@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./components/Button";
 import Filter from "./components/Filter";
 import Table from "./components/Table/Table";
@@ -8,6 +8,7 @@ import EditForm from "./components/EditForm";
 import "./App.css";
 
 function App() {
+  const [open, setOpen] = useState(false);
   const todoTaskList = () => {
     return record.map((task) => {
       const { title, color } = statusList.find((el) => el.id === task.status);
@@ -19,17 +20,20 @@ function App() {
     });
   };
 
+  const handleModal = () => {
+    setOpen(!open);
+  };
   useEffect(() => {
     document.title = "Todo List";
   });
 
   return (
     <div className="App">
-      <EditForm />
+      <EditForm open={open} handleClose={handleModal} />
       <header className="App-header">
         <h2>Todo List</h2>
         <div className="todo-list-controller">
-          <Button text="+" />
+          <Button text="+" onclick={handleModal} />
           <Filter />
         </div>
       </header>

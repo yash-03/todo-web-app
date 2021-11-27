@@ -16,7 +16,7 @@ function Table(props) {
         <tbody>
           {data.length > 0 ? (
             (data ?? []).map((el) => (
-              <tr>
+              <tr key={el.id}>
                 <td>{el.task}</td>
                 <td>{el.status}</td>
                 <td>{el.action}</td>

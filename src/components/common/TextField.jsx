@@ -4,9 +4,9 @@ import "./TextField.css";
 
 function TextField({ label, type, name }) {
   return (
-    <div class="form-field">
+    <div className="form-field">
       <label className="field-label">{label}</label>
-      <input type="text" name={name} className="field-control text-field" />
+      <input type="text" name={name} className="field-control" />
     </div>
   );
 }

@@ -4,9 +4,9 @@ import "./TextField.css";
 
 function TextArea({ label, type, name }) {
   return (
-    <div class="form-field">
+    <div className="form-field">
       <label className="field-label">{label}</label>
-      <textarea type="text" name={name} className="field-control text-field" />
+      <textarea type="text" name={name} className="field-control" />
     </div>
   );
 }

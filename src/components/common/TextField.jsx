@@ -6,7 +6,7 @@ function TextField({ label, type, name }) {
   return (
     <div className="form-field">
       <label className="field-label">{label}</label>
-      <input type="text" name={name} className="field-control" />
+      <input type={type} name={name} className="field-control" />
     </div>
   );
 }

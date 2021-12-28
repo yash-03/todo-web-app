@@ -9,8 +9,22 @@ import { priorities, status } from "../constants";
 import "./EditForm.css";
 
 function EditForm({ open, handleClose }) {
-  const submitHandler = () => {
-    console.log("test submit");
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const { description, priority, task, status } = e.target.elements;
+    const record = JSON.parse(localStorage.getItem("todo")) ?? [];
+    const newRecord = [
+      ...record,
+      {
+        id: record.length + 1,
+        description: description.value,
+        priority: priority.value,
+        name: task.value,
+        status: status.value,
+      },
+    ];
+    localStorage.setItem("todo", JSON.stringify(newRecord));
+    handleClose();
   };
   return (
     <Modal open={open} handleClose={handleClose}>
@@ -18,22 +32,10 @@ function EditForm({ open, handleClose }) {
         <form onSubmit={submitHandler} className="form">
           <h2>New Task</h2>
           <TextField name="task" label="Task Name" />
-          <Select
-            options={priorities}
-            name="priority"
-            value=""
-            label="Priority"
-            changeHandler={() => "test"}
-          />
-          <Select
-            options={status}
-            name="status"
-            value=""
-            label="status"
-            changeHandler={() => "test"}
-          />
+          <Select options={priorities} name="priority" label="Priority" />
+          <Select options={status} name="status" label="status" />
           <TextArea name="description" label="Description" />
-          <Button text="Save" classes="form-button" />
+          <Button text="Save" type="submit" classes="form-button" />
         </form>
       </div>
     </Modal>

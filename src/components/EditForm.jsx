@@ -12,6 +12,19 @@ function EditForm({ open, handleClose }) {
   const submitHandler = (e) => {
     e.preventDefault();
     const { description, priority, task, status } = e.target.elements;
+    const record = JSON.parse(localStorage.getItem("todo")) ?? [];
+    const newRecord = [
+      ...record,
+      {
+        id: record.length + 1,
+        description: description.value,
+        priority: priority.value,
+        name: task.value,
+        status: status.value,
+      },
+    ];
+    localStorage.setItem("todo", JSON.stringify(newRecord));
+    handleClose();
   };
   return (
     <Modal open={open} handleClose={handleClose}>

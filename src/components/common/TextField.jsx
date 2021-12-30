@@ -2,11 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./TextField.css";
 
-function TextField({ label, type, name }) {
+function TextField({ label, type, name, value, onChange }) {
   return (
     <div className="form-field">
       <label className="field-label">{label}</label>
-      <input type={type} name={name} className="field-control" />
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="field-control"
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Modal from "./common/modal/Modal";
 import TextField from "./common/TextField";
@@ -8,21 +8,38 @@ import Select from "./common/Select";
 import { priorities, status } from "../constants";
 import "./EditForm.css";
 
+const initialState = {
+  description: "",
+  priority: "",
+  name: "",
+  status: "",
+};
+
 function EditForm({ open, handleClose }) {
+  const [state, setState] = useState(initialState);
+
+  const formStateHandler = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    const { description, priority, task, status } = e.target.elements;
+    const { description, priority, name, status } = state;
     const record = JSON.parse(localStorage.getItem("todo")) ?? [];
     const newRecord = [
       ...record,
       {
         id: record.length + 1,
-        description: description.value,
-        priority: priority.value,
-        name: task.value,
-        status: status.value,
+        description,
+        priority,
+        name,
+        status,
       },
     ];
+    setState(initialState);
     localStorage.setItem("todo", JSON.stringify(newRecord));
     handleClose();
   };
@@ -31,10 +48,32 @@ function EditForm({ open, handleClose }) {
       <div>
         <form onSubmit={submitHandler} className="form">
           <h2>New Task</h2>
-          <TextField name="task" label="Task Name" />
-          <Select options={priorities} name="priority" label="Priority" />
-          <Select options={status} name="status" label="status" />
-          <TextArea name="description" label="Description" />
+          <TextField
+            name="name"
+            label="Task Name"
+            value={state.name}
+            onChange={formStateHandler}
+          />
+          <Select
+            options={priorities}
+            value={state.priority}
+            name="priority"
+            label="Priority"
+            onChange={formStateHandler}
+          />
+          <Select
+            options={status}
+            value={state.status}
+            name="status"
+            label="status"
+            onChange={formStateHandler}
+          />
+          <TextArea
+            name="description"
+            value={state.description}
+            label="Description"
+            onChange={formStateHandler}
+          />
           <Button text="Save" type="submit" classes="form-button" />
         </form>
       </div>

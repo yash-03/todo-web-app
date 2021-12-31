@@ -2,11 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./TextField.css";
 
-function TextArea({ label, name }) {
+function TextArea({ label, name, value, onChange }) {
   return (
     <div className="form-field">
       <label className="field-label">{label}</label>
-      <textarea name={name} className="field-control" />
+      <textarea
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="field-control"
+      />
     </div>
   );
 }

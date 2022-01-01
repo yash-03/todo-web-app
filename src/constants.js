@@ -19,11 +19,11 @@ export const actions = [
   },
 ];
 
-export const statusList = [
-  { id: 1, title: "Pending", color: "orange" },
-  { id: 2, title: "Todo", color: "yellow" },
-  { id: 3, title: "Delete", color: "red" },
-  { id: 4, title: "Working", color: "green" },
+export const status = [
+  { value: 1, label: "Pending", color: "orange" },
+  { value: 2, label: "Todo", color: "green" },
+  { value: 3, label: "Delete", color: "red" },
+  { value: 4, label: "Working", color: "brown" },
 ];
 
 export const record = [
@@ -45,14 +45,8 @@ export const record = [
 ];
 
 export const priorities = [
+  { label: "Select Priority", value: "" },
   { label: "low", value: 1 },
   { label: "medium", value: 2 },
   { label: "high", value: 3 },
-];
-
-export const status = [
-  { label: "pending", value: 1 },
-  { label: "working", value: 2 },
-  { label: "open", value: 3 },
-  { label: "finish", value: 4 },
 ];

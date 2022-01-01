@@ -5,11 +5,13 @@ import Table from "./components/Table/Table";
 import Action from "./components/Action";
 import { status } from "./constants.js";
 import EditForm from "./components/EditForm";
+import ViewTodo from "./components/ViewTodo";
 import "./App.css";
 
 function App() {
   const todo = JSON.parse(localStorage.getItem("todo"));
   const [open, setOpen] = useState(false);
+  const [isView, setIsView] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState({});
   const [operation, setOperation] = useState({
     id: "",
@@ -26,11 +28,14 @@ function App() {
       id,
       type,
     });
+    const todoItem = todo.find((item) => item.id === id);
+    setSelectedTodo(todoItem);
     switch (type) {
       case "edit":
-        const todoItem = todo.find((item) => item.id === id);
-        setSelectedTodo(todoItem);
         setOpen(true);
+        break;
+      case "view":
+        setIsView(true);
         break;
       default:
     }
@@ -54,6 +59,7 @@ function App() {
       id: "",
       type: "add",
     });
+    setIsView(false);
     setOpen(false);
   };
 
@@ -63,6 +69,12 @@ function App() {
         open={open}
         handleClose={handleCloseModal}
         operation={operation}
+        selectedTodo={selectedTodo}
+      />
+
+      <ViewTodo
+        open={isView}
+        handleClose={handleCloseModal}
         selectedTodo={selectedTodo}
       />
       <header className="App-header">

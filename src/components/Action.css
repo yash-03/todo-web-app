@@ -3,6 +3,7 @@
 }
 .Action > .button,
 .Action > .tooltip > .button {
+  cursor: pointer;
   margin-left: 5px;
   font-size: 20px;
   width: 40px;

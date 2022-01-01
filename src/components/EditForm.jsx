@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Modal from "./common/modal/Modal";
 import TextField from "./common/TextField";
@@ -8,15 +8,22 @@ import Select from "./common/Select";
 import { priorities, status } from "../constants";
 import "./EditForm.css";
 
-const initialState = {
+const defaultValue = {
   description: "",
   priority: "",
   name: "",
   status: "",
 };
 
-function EditForm({ open, handleClose }) {
-  const [state, setState] = useState(initialState);
+function EditForm({ open, handleClose, operation, selectedTodo }) {
+  const { type } = operation;
+  const record = JSON.parse(localStorage.getItem("todo")) ?? [];
+  const [state, setState] = useState(defaultValue);
+
+  useEffect(() => {
+    const initialState = type === "add" ? defaultValue : selectedTodo;
+    setState(initialState);
+  }, [type, selectedTodo]);
 
   const formStateHandler = (e) => {
     setState({
@@ -27,20 +34,33 @@ function EditForm({ open, handleClose }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const { description, priority, name, status } = state;
-    const record = JSON.parse(localStorage.getItem("todo")) ?? [];
-    const newRecord = [
-      ...record,
-      {
+    let newRecord = [];
+    const { description, priority, name, status, id } = state;
+    if (id && operation.type === "edit") {
+      const todos = [...record];
+      const oldTodoIndex = todos.findIndex((todo) => todo.id === id);
+      const oldTodo = { ...todos[oldTodoIndex] };
+      todos[oldTodoIndex] = {
+        ...oldTodo,
+        description,
+        priority,
+        name,
+        status,
+      };
+      newRecord = todos;
+    } else {
+      const newTodo = {
         id: record.length + 1,
         description,
         priority,
         name,
         status,
-      },
-    ];
-    setState(initialState);
+      };
+
+      newRecord = [...record, newTodo];
+    }
     localStorage.setItem("todo", JSON.stringify(newRecord));
+    setState(defaultValue);
     handleClose();
   };
   return (

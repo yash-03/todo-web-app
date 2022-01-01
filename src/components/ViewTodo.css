@@ -1,0 +1,27 @@
+.todo-view {
+  width: 100%;
+}
+
+.todo-view > .todo-item {
+  border: 1px solid #000;
+  display: flex;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.todo-view > .todo-item label,
+.todo-view > .todo-item p {
+  width: 50%;
+  font-size: 16px;
+  margin: 0;
+}
+
+.todo-view > .todo-item label {
+  font-weight: bolder;
+}
+
+.todo-view > .close-btn {
+  width: 100%;
+  background-color: #888;
+  border: 1px solid #888;
+}

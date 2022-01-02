@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import Button from "./common/Button";
 import ToolTip from "./ToolTip";
 import { actions } from "../constants";
 import "./Action.css";

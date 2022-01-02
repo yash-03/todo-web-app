@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "./common/modal/Modal";
 import TextField from "./common/TextField";
 import TextArea from "./common/TextArea";
-import Button from "./Button";
+import Button from "./common/Button";
 import Select from "./common/Select";
 import { priorities, status } from "../constants";
 import "./EditForm.css";

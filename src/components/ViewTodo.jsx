@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Modal from "./common/modal/Modal";
-import Button from "./Button";
+import Button from "./common/Button";
 import { priorities, status as statusList } from "../constants";
 import "./ViewTodo.css";
 

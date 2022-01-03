@@ -1,0 +1,12 @@
+.confirm-model {
+}
+
+.confirm-model > .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirm-model > .buttons > button {
+  border-radius: 5px;
+  width: 150px;
+}

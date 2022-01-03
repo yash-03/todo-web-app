@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Button from "./components/Button";
+import Button from "./components/common/Button";
 import Filter from "./components/Filter";
 import Table from "./components/Table/Table";
 import Action from "./components/Action";
 import { status } from "./constants.js";
 import EditForm from "./components/EditForm";
 import ViewTodo from "./components/ViewTodo";
+import ConfirmModel from "./components/ConfirmModel";
 import "./App.css";
 
 function App() {
   const todo = JSON.parse(localStorage.getItem("todo"));
   const [open, setOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
   const [isView, setIsView] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState({});
   const [operation, setOperation] = useState({
@@ -37,6 +39,9 @@ function App() {
       case "view":
         setIsView(true);
         break;
+      case "delete":
+        setConfirmOpen(true);
+        break;
       default:
     }
   };
@@ -53,6 +58,15 @@ function App() {
     });
   };
 
+  const handleConfirm = () => {
+    const oldTodo = [...todo];
+    const removeTodoIndex = oldTodo.findIndex(
+      (el) => el.id === selectedTodo.id
+    );
+    const deletedTodo = oldTodo.splice(removeTodoIndex, 1);
+    localStorage.setItem("todo", JSON.stringify(oldTodo));
+    handleCloseModal();
+  };
   const handleCloseModal = () => {
     setSelectedTodo({});
     setOperation({
@@ -60,6 +74,7 @@ function App() {
       type: "add",
     });
     setIsView(false);
+    setConfirmOpen(false);
     setOpen(false);
   };
 
@@ -77,6 +92,15 @@ function App() {
         handleClose={handleCloseModal}
         selectedTodo={selectedTodo}
       />
+
+      <ConfirmModel
+        open={confirmOpen}
+        handleClose={handleCloseModal}
+        handleConfirm={handleConfirm}
+        message="Are you sure want to delete?"
+        title="Confirmation"
+      />
+
       <header className="App-header">
         <h2>Todo List</h2>
         <div className="todo-list-controller">

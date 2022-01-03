@@ -10,7 +10,8 @@ import ConfirmModel from "./components/ConfirmModel";
 import "./App.css";
 
 function App() {
-  const todo = JSON.parse(localStorage.getItem("todo"));
+  let todo = JSON.parse(localStorage.getItem("todo"));
+  const [filter, setFilter] = useState("all");
   const [open, setOpen] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [isView, setIsView] = useState(false);
@@ -24,6 +25,18 @@ function App() {
   useEffect(() => {
     document.title = "Todo List";
   });
+
+  useEffect(() => {
+    switch (filter) {
+      case "done":
+        todo = todo.filter((el) => el.status === "2");
+        break;
+      case "delete":
+        todo = todo.filter((el) => el.deleted === true);
+        break;
+      default:
+    }
+  }, [filter]);
 
   const actionHandler = (id, type) => {
     setOperation({

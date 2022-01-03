@@ -21,10 +21,11 @@ export const actions = [
 
 export const status = [
   { label: "Select Status", value: "" },
-  { value: "1", label: "Pending", color: "orange" },
-  { value: "2", label: "Todo", color: "green" },
-  { value: "3", label: "Delete", color: "red" },
-  { value: "4", label: "Working", color: "brown" },
+  { value: "1", label: "Create", color: "#515155" },
+  { value: "2", label: "Processing", color: "#007fff" },
+  { value: "3", label: "Pending", color: "#e91e63" },
+  { value: "4", label: "Done", color: "#00ff00" },
+  { value: "5", label: "Delete", color: "#ff0000" },
 ];
 
 export const record = [

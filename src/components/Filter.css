@@ -1,4 +1,5 @@
 .filter {
+  color: #2c560e;
   font-size: 16px;
 }
 .filter > label {
@@ -6,9 +7,12 @@
   font-weight: bold;
   font-size: 19px;
 }
-.filter > .select-box {
+.filter > .select-box,
+.filter > .select-box:active {
   padding: 8px;
   border-radius: 4px;
   font-size: 16px;
   background: white;
+  border: 2px solid #2c560e;
+  color: #2c560e;
 }

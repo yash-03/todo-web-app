@@ -1,11 +1,26 @@
 .table {
   width: 100%;
-  border: 1px solid #ccc;
+  border: 2px solid #2c560c;
   border-collapse: collapse;
+  color: #2c560c;
+  font-weight: 700;
 }
 .table > thead > tr > th,
 .table > tbody > tr > td {
   padding: 10px;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 2px solid #2c560c;
+}
+
+.table > thead > tr > th {
+  background-color: #7eed15;
+  padding: 15px 10px;
+}
+
+.table > tbody > tr > td:nth-child(2) {
+  font-weight: bold;
+}
+
+.table > tbody > tr:nth-child(odd) {
+  background-color: #aae3b7;
 }

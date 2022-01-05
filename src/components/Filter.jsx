@@ -7,9 +7,9 @@ function Filter() {
       <label>Task:</label>
       <select className="select-box">
         <option value="">Select Options...</option>
-        <option value="1">All</option>
-        <option value="2">Done</option>
-        <option value="3">Delete</option>
+        <option value="all">All</option>
+        <option value="done">Done</option>
+        <option value="delete">Delete</option>
       </select>
     </div>
   );

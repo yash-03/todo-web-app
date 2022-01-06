@@ -10,8 +10,8 @@ import ConfirmModel from "./components/ConfirmModel";
 import "./App.css";
 
 function App() {
-  let todo = JSON.parse(localStorage.getItem("todo"));
-  const [filter, setFilter] = useState("all");
+  const [todo, setTodo] = useState([]);
+  const [filter, setFilter] = useState("");
   const [open, setOpen] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [isView, setIsView] = useState(false);
@@ -27,14 +27,11 @@ function App() {
   });
 
   useEffect(() => {
-    switch (filter) {
-      case "done":
-        todo = todo.filter((el) => el.status === "2");
-        break;
-      case "delete":
-        todo = todo.filter((el) => el.deleted === true);
-        break;
-      default:
+    const todoArr = JSON.parse(localStorage.getItem("todo")) ?? [];
+    if (filter) {
+      setTodo(todoArr.filter((el) => el.status === filter));
+    } else {
+      setTodo(todoArr);
     }
   }, [filter]);
 
@@ -76,10 +73,11 @@ function App() {
     const removeTodoIndex = oldTodo.findIndex(
       (el) => el.id === selectedTodo.id
     );
-    const deletedTodo = oldTodo.splice(removeTodoIndex, 1);
+    oldTodo.splice(removeTodoIndex, 1);
     localStorage.setItem("todo", JSON.stringify(oldTodo));
     handleCloseModal();
   };
+
   const handleCloseModal = () => {
     setSelectedTodo({});
     setOperation({
@@ -118,7 +116,7 @@ function App() {
         <h2>Todo List</h2>
         <div className="todo-list-controller">
           <Button text="+" onclick={() => setOpen(true)} />
-          <Filter />
+          <Filter handleFilter={setFilter} />
         </div>
       </header>
       <section className="App-body">
